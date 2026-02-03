@@ -12,6 +12,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
+# import gradio as gr
 
 
 load_dotenv()
@@ -166,3 +167,26 @@ def running_agent():
         print(result['messages'][-1].content)
 
 running_agent()
+
+# def predict(message, history):
+#     # history in Gradio 4 is a list of tuples: [[user, bot], [user, bot]]
+#     input_messages = []
+#     for user_msg, ai_msg in history:
+#         input_messages.append(HumanMessage(content=user_msg))
+#         input_messages.append(AIMessage(content=ai_msg))
+    
+#     input_messages.append(HumanMessage(content=message))
+#     result = rag_agent.invoke({"messages": input_messages})
+#     return result['messages'][-1].content
+
+# # Create the interface without 'type' or 'theme'
+# demo = gr.ChatInterface(
+#     fn=predict,
+#     title="📈 2024 Stock Market Analyst",
+#     description="Ask questions about the 2024 Stock Market Performance PDF.",
+#     examples=["How did the S&P 500 perform in Q1?", "Which sectors had the highest growth?"],
+# )
+
+# if __name__ == "__main__":
+#     # Launch with theme here
+#     demo.launch()
